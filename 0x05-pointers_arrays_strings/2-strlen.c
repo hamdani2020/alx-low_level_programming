@@ -7,7 +7,7 @@
  * Return: length of a string.
  */
 
-int _strien(char *s)
+int _strlen(char *s)
 {
 	int count = 0;
 
