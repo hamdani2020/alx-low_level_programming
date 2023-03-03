@@ -8,7 +8,6 @@
  *
  * Return: address of dest
  */
-
 char *_strcat(char *dest, char *src)
 {
 	int i, j;
@@ -23,3 +22,4 @@ char *_strcat(char *dest, char *src)
 	}
 	return (dest);
 }
+
