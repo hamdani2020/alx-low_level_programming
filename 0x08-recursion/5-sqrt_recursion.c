@@ -2,8 +2,8 @@
 
 /**
  * check - checks for the square root
- * @a:int
- * @b:int
+ * @x:int
+ * @y:int
  *
  * Return: int
  */
