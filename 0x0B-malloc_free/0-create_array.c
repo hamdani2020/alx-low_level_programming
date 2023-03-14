@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * create_array - creates an array of chars and initializes
@@ -27,6 +27,4 @@ char *create_array(unsigned int size, char c)
 		a[i] = c;
 
 	return (a);
-
 }
-
