@@ -1,6 +1,5 @@
 #include <stdlib.h>
 
-
 /**
  * *_strdup - a function that duplicates a string
  *
@@ -10,16 +9,16 @@
  *         @str
 */
 
-
 char *_strdup(char *str)
 {
-	int i = 0,l = 0;
+	int i = 0, l = 0;
 	char *s;
 
 	if (str == NULL)
 		return (NULL);
 
-	while (str[1] != '\0')
+	/*calculate size of str*/
+	while (str[l] != '\0')
 		l++;
 
 	s = malloc((l + 1) * sizeof(char));
