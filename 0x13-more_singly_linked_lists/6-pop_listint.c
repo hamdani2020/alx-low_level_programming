@@ -2,11 +2,12 @@
 #include <stdlib.h>
 
 /**
- * pop_listint - deletes the head node of a singly linked list
- * @head: a double pointer to the head of the list
+ * pop_listint - deletes the head node
+ * @head: a double pointer
  *
- * Return: the value of the deleted node, or 0 if the list is empty
+ *Return: empty
  */
+
 int pop_listint(listint_t **head)
 {
     if (head == NULL || *head == NULL) {
