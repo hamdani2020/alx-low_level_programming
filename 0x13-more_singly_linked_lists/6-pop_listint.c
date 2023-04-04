@@ -10,15 +10,15 @@
 
 int pop_listint(listint_t **head)
 {
-    if (head == NULL || *head == NULL) {
-        return 0;
-    }
-    
-    listint_t *temp = *head;  // save the current head node
-    int value = temp->n;      // save its value for return later
-    *head = temp->next;       // update the head pointer to the next node
-    free(temp);               // free the memory of the deleted node
-    
-    return value;
+	listint_t *temp;
+	int n;
+
+	if (head == NULL || *head == NULL)
+		return (0);
+	temp  = *head;
+	*head = temp->next;
+	n = temp->n;
+	free(temp);
+	return (n);
 }
 
