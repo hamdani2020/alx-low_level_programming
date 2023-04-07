@@ -1,44 +1,57 @@
 #include "main.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
 
 /**
- * read_textfile - Reads a text file and prints it to the standard output
- *                in POSIX format.
+ * read_textfile - Reads a text file and prints it to standard output.
  *
- * @filename: The name of the file to read.
- * @letters: The number of letters to read and print from the file.
+ * @filename: A pointer to the name of the file to be read.
+ * @letters: The maximum number of bytes the function should read and print.
  *
- * Return: The number of letters successfully read and printed, or 0 on failure.
+ * Return: If the function fails or filename is NULL - 0.
+ *         O/w - the actual number of bytes the function reads and prints.
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	/* Check if the filename is valid. */
-	if (filename == NULL)
-		return (0);
+    int fd;
+    ssize_t bytes_read, bytes_written;
+    char *buffer;
 
-	/* Open the file. */
-	int file = open(filename, O_RDONLY);
-	if (file == -1)
-		return (0);
+    if (filename == NULL)
+        return (0);
 
-	/* Allocate a buffer of the appropriate size. */
-	char *buffer = malloc(sizeof(char) * letters);
-	if (buffer == NULL)
-		return (0);
+    buffer = malloc(sizeof(char) * letters);
+    if (buffer == NULL)
+        return (0);
 
-	/* Read the file into the buffer. */
-	ssize_t read_check = read(file, buffer, letters);
-	if (read_check == -1)
-		return (0);
+    fd = open(filename, O_RDONLY);
+    if (fd == -1)
+    {
+        free(buffer);
+        return (0);
+    }
 
-	/* Write the buffer to the standard output. */
-	ssize_t write_count = write(STDOUT_FILENO, buffer, read_check);
-	if (write_count == -1 || write_count != read_check)
-		return (0);
+    bytes_read = read(fd, buffer, letters);
+    if (bytes_read == -1)
+    {
+        free(buffer);
+        close(fd);
+        return (0);
+    }
 
-	/* Free the buffer and close the file. */
-	free(buffer);
-	close(file);
+    bytes_written = write(STDOUT_FILENO, buffer, bytes_read);
+    if (bytes_written == -1 || bytes_written != bytes_read)
+    {
+        free(buffer);
+        close(fd);
+        return (0);
+    }
 
-	return (write_count);
+    free(buffer);
+    close(fd);
+
+    return (bytes_written);
 }
 
