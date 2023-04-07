@@ -1,40 +1,32 @@
 #include "main.h"
-
 /**
- * create_file - creates a file with the given name and writes the given text
- *               content to it
+ * create_file -creates an array of chars, and initializes
  *
- * @filename: the name of the file to create
- * @text_content: the text content to write to the file
+ * @text_content: is a NULL terminated string to write to the file
+ * @filename: is the name of the file to create
  *
  * Return: 1 on success, -1 on failure
  */
 int create_file(const char *filename, char *text_content)
 {
-	// Check if filename is NULL
+	int op, wri, len = 0;
+
 	if (filename == NULL)
 		return (-1);
 
-	// Count the number of characters in the text content
-	int text_length = 0;
-	if (text_content != NULL)
+	if (text_content)
 	{
-		while (text_content[text_length] != '\0')
-			text_length++;
+		for (len = 0; text_content[len];)
+			len++;
 	}
 
-	// Create the file with the given name and open it for reading and writing
-	int file_descriptor = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
+	op = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
+	wri = write(op, text_content, len);
 
-	// Write the text content to the file
-	int write_result = write(file_descriptor, text_content, text_length);
-
-	// Check if the file could not be created or if the text content could not be written
-	if (file_descriptor == -1 || write_result == -1)
+	if (op == -1 || wri == -1)
 		return (-1);
 
-	// Close the file
-	close(file_descriptor);
+	close(op);
 
 	return (1);
 }
