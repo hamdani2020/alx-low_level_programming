@@ -1,78 +1,29 @@
 #include "main.h"
 
 /**
- * _atoi - converts a character to an integer
+ * binary_to_uint -changes binary number to an unsigned int.
+ * @x: pointing to a string of 0 and 1 chars
  *
- * @c: char to convert
- *
- * Return: converted integer
+ * Return:changed number, or 0
  */
-unsigned int _atoi(char c)
+unsigned int binary_to_uint(const char *x)
 {
-	return ((unsigned int) c - '0');
-}
+	int iterate;
+	unsigned int p;
 
-/**
- * _strlen - gets the length of a string
- *
- * @str: string input
- *
- * Return: string length
- */
-unsigned int _strlen(const char *str)
-{
-	unsigned int index = 0;
-
-	while (str[index] != '\0')
-	{
-		index++;
-	}
-	return (index);
-}
-
-/**
- * binary_to_uint - converts a binary number to an unsigned integer
- *
- * @b: string that contains 0 and 1 characters
- *
- * Return: the number converted or 0 if @b contains a character
- *         that is not 0 or 1 or when @b is null
- */
-unsigned int binary_to_uint(const char *b)
-{
-	int index;
-	unsigned int result = 0, base2 = 1, num = 0;
-
-	if (b == NULL) /* Check if b is NULL */
-	{
+	p = 0;
+	if (!x)
 		return (0);
-	}
-
-#ifdef DEBUG
-	printf("String is %s, and length is %u.\n", b, _strlen(b)); /* Debug statement */
-#endif
-
-	for (index = _strlen(b) - 1; index >= 0; index--)
+	for (iterate = 0; x[iterate] != '\0'; iterate++)
 	{
-		num = _atoi(b[index]); /* Convert char to number */
-
-#ifdef DEBUG
-		printf("Number is %u, index is %i and base is %u.\n\n", num, index, base2); /* Debug statement */
-#endif
-
-		if (num != 0 && num != 1) /* Check if num is not 0 or 1 */
-		{
+		if (x[iterate] != '0' && x[iterate] != '1')
 			return (0);
-		}
-
-		result += num * base2; /* Calculate result */
-		base2 *= 2;
-
-#ifdef DEBUG
-		printf("Result is %u.\n", result); /* Debug statement */
-#endif
 	}
-
-	return (result);
+	for (iterate = 0; x[iterate] != '\0'; iterate++)
+	{
+		p <<= 1;
+		if (x[iterate] == '1')
+			p += 1;
+	}
+	return (p);
 }
-
