@@ -7,7 +7,7 @@
  * @n: This is an integer stored at the node.
  * @index: This is an index of the node in the list.
  * @next: This pointer points to the next node.
- * @exp: This is the pointer to the next node in the express lane.
+ * @express: This is the pointer to the next node in the express lane.
  *
  * Description: This is a singly linked list node structure with an express lane.
  */
@@ -16,7 +16,7 @@ typedef struct skiplist_s
 	int n;
 	size_t index;
 	struct skiplist_s *next;
-	struct skiplist_s *exp;
+	struct skiplist_s *express;
 } skiplist_t;
 
 /**
