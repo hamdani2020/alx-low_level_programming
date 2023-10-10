@@ -47,7 +47,7 @@ int binary_search_index(int *array, size_t l, size_t r, int value)
 }
 
 /**
- * binary_search - This searches a value in a sorted array using a binary search.
+ * binary_search - This searches a value in a sorted array
  * @array: Array to search in.
  * @size: Length of the array.
  * @value: Value to look for.
