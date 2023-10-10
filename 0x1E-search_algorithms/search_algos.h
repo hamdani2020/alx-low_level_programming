@@ -4,7 +4,7 @@
 
 /**
  * struct skiplist_s - This is a singly linked list with an express lane.
- * @nt: This is an integer stored at the node.
+ * @n: This is an integer stored at the node.
  * @index: This is an index of the node in the list.
  * @next: This pointer points to the next node.
  * @exp: This is the pointer to the next node in the express lane.
@@ -13,7 +13,7 @@
  */
 typedef struct skiplist_s
 {
-	int nt;
+	int n;
 	size_t index;
 	struct skiplist_s *next;
 	struct skiplist_s *exp;
@@ -21,7 +21,7 @@ typedef struct skiplist_s
 
 /**
  * struct listint_s - This is a singly linked list.
- * @nt: This is integer stored at the node.
+ * @n: This is integer stored at the node.
  * @index: This is the index of the node in the list.
  * @next: This pointer points to the next node.
  *
@@ -30,7 +30,7 @@ typedef struct skiplist_s
 
 typedef struct listint_s
 {
-	int nt;
+	int n;
 	size_t index;
 	struct listint_s *next;
 } listint_t;
