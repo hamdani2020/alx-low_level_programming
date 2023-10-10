@@ -17,7 +17,7 @@ size_t minimum_value(size_t x, size_t y)
 
 
 /**
- * jump_search - it searches for a value in a sorted array of integers using the
+ * jump_search - it searches for a value in a sorted array of
  * Jump search algorithm
  * @array: This pointer points to the first element of the array to search in
  * @size: number of elements in array or the length of the array
