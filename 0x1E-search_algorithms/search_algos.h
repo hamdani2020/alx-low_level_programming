@@ -9,7 +9,6 @@
  * @next: This pointer points to the next node.
  * @express: This is the pointer to the next node in the express lane.
  *
- * Description: This is a singly linked list node structure with an express lane.
  */
 typedef struct skiplist_s
 {
